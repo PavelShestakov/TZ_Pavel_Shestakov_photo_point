@@ -19,7 +19,7 @@ class CurrentUsdAPIView(APIView):
             serializer.save()
 
         try:
-            '''Получем последние 10 записей в бд и возвращаем их в качестве ответа на запрос'''
+            '''Получем послежние 10 записей в бд и возвражаем их в качестве ответа на запрос'''
             last_ten_requests = CurrentUsd.objects.all().order_by('-id')[:10]
             return Response(CurrentUsdSerializer(last_ten_requests, many=True).data)
         except:

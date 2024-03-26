@@ -1,0 +1,35 @@
+Устанавливаем redis на сервере
+sudo apt update
+sudo apt install redis
+redis-server
+redis-cli - работает ли связь с сервером
+127.0.0.1:6379
+
+celery -A Get_current_usd worker -l INFO
+celery -A Get_current_usd beat -l INFO
+CONFIG SET protected-mode no
+
+[2024-02-22 16:51:59,128: ERROR/MainProcess] consumer: Cannot connect to redis://root:**@194.67.200.27:6379//: DENIED Redis is running in protected mo
+de because protected mode is enabled and no password is set for the default user. In this mode connections are only accepted from the loopback interfa
+ce. If you want to connect from external computers to Redis you may adopt one of the following solutions: 1) Just disable protected mode sending the command 'CONFIG SET protected-mode no' from the loopback interface by connecting to Redis from the same host the server is running, however MAKE SURE Redis is not publicly accessible from internet if you do so. Use CONFIG REWRITE to make this change permanent. 2) Alternatively you can just disable th
+e protected mode by editing the Redis configuration file, and setting the protected mode option to 'no', and then restarting the server. 3) If you sta
+rted the server manually just for testing, restart it with the '--protected-mode no' option. 4) Set up an authentication password for the default user
+. NOTE: You only need to do one of the above things in order for the server to start accepting connections from the outside..
+Trying again in 8.00 seconds... (4/100)
+
+[2024-02-22 16:51:59,128: ОШИБКА/MainProcess] потребитель: невозможно подключиться к redis://root:**@194.67.200.27:6379//:
+ЗАПРЕЩЕНО Redis работает в защищенном режиме
+de, потому что защищенный режим включен, а пароль для пользователя по умолчанию не установлен.
+В этом режиме соединения принимаются только через интерфейс обратной связи.
+в.э. Если вы хотите подключиться к Redis с внешних компьютеров, вы можете использовать одно из следующих решений:
+1) Просто отключите защищенный режим, отправив команду «CONFIG SET protected-mode no» из интерфейса обратной связи,
+подключившись к Redis с того же хоста, что и сервер. работает,
+однако УБЕДИТЕСЬ, что Redis не является общедоступным из Интернета, если вы это сделаете.
+Используйте CONFIG REWRITE, чтобы сделать это изменение постоянным. 2) Альтернативно вы можете просто отключить это
+Чтобы перейти в защищенный режим, отредактируйте файл конфигурации Redis и установите для параметра защищенного
+режима значение «нет», а затем перезапустите сервер. 3) Если ты остаешься
+запустил сервер вручную только для тестирования, перезапустите его с опцией --protected-mode no.
+4) Установите пароль аутентификации для пользователя по умолчанию.
+. ПРИМЕЧАНИЕ. Вам нужно выполнить только одно из вышеперечисленных действий,
+чтобы сервер начал принимать соединения извне.
+--protected-mode no
